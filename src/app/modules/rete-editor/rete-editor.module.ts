@@ -5,24 +5,25 @@ import { ReteModule } from "rete-angular-render-plugin";
 import { NumberNgControl } from "./controls/num.component";
 import { ReteEditorComponent } from "./rete-editor.component";
 
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MyNodeComponent } from './my-node/my-node.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     ReteEditorComponent, 
-    NumberNgControl
+    NumberNgControl,
+    MyNodeComponent
   ],
   imports: [
     CommonModule, 
     FormsModule,
     ReteModule,
-    MatFormFieldModule,
-    MatInputModule
+    FontAwesomeModule
   ],
   exports: [
     ReteEditorComponent
   ],
-  entryComponents: [NumberNgControl]
+  entryComponents: [NumberNgControl, MyNodeComponent]
 })
 export class ReteEditorModule {}

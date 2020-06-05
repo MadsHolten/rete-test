@@ -6,6 +6,8 @@ import ContextMenuPlugin from "rete-context-menu-plugin";
 import { AngularRenderPlugin } from "rete-angular-render-plugin";
 import * as reteArea from "rete-area-plugin";
 
+import { MyNodeComponent } from './my-node/my-node.component';
+
 // Rete components
 import { ConsumerComponent } from "./components/consumer-component";
 import { JointComponent } from "./components/joint-component";
@@ -43,7 +45,7 @@ export class ReteEditorComponent implements AfterViewInit {
     const editor = new NodeEditor("demo@0.2.0", container);
     editor.use(ConnectionPlugin);
     console.log("AngularRenderPlugin", AngularRenderPlugin);
-    editor.use(AngularRenderPlugin); //, { component: MyNodeComponent });
+    editor.use(AngularRenderPlugin, { component: MyNodeComponent });
     editor.use(ContextMenuPlugin);
 
     const engine = new Engine("demo@0.2.0");

@@ -1,0 +1,25 @@
+<div class="node" [ngClass]="[selected(), node.name]">
+
+    <!-- Display title -->
+    <div *ngIf="!editTitleMode || !selected()" class="title" (click)="toggleEditTitleMode()">{{node.name}}</div>
+
+    <!-- Edit title -->
+    <div *ngIf="editTitleMode && selected()">
+        <input
+            class="edit-title" 
+            type="string"
+            [(ngModel)]="node.name"
+        />
+        <fa-icon [icon]="faSave" (click)="toggleEditTitleMode()"></fa-icon>
+    </div>
+    <div class="output" *ngFor="let output of outputs">
+        <div class="output-title">{{output.name}}</div>
+        <rete-socket rete-socket [io]="output" [socket]="output.socket"></rete-socket>
+    </div>
+    <div class="control" *ngFor="let control of controls" [rete-control]="control"></div>
+    <div class="input" *ngFor="let input of inputs">
+        <rete-socket rete-socket [io]="input" [socket]="input.socket"></rete-socket>
+        <div class="input-title" *ngIf="!input.showControl()">{{input.name}}</div>
+        <div class="input-control" *ngIf="input.showControl()" [rete-control]="input.control"></div>
+    </div>
+</div>

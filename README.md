@@ -1,27 +1,16 @@
-# ReteTest
+# Rete-test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-rc.3.
+Dette er blot et testprojekt hvor jeg kigger på mulighederne i ReteJS i samspil med Angular.
 
-## Development server
+[Prøv det!](https://madsholten.github.io/rete-test/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Status
+Implementeret:
+* Enheder understøttes, og det gælder også konvertering mellem disse med [@lhncbc/ucum-lhc](https://www.npmjs.com/package/@lhncbc/ucum-lhc)-biblioteket
+* Mulighed for at ændre navnet på en component
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Todo:
+* Mulighed for enhedskonvertering i "watch"-node
+* Alle talværdier skal være NumUnit-formateret (værdi + enhed)
+* Måske understøttelse af flere mængdetyper - eksempelvis effekt
+* Mere komplicerede komponenter hvor en effekt eksempelvis omsættes til et flow
