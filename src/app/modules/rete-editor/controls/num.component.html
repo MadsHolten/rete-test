@@ -1,0 +1,28 @@
+<div fxLayout="row" *ngIf="label">
+    <label>{{label}}</label>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <input
+        fxFlex="grow"
+        type="number"
+        [(ngModel)]="value"
+        [readonly]="readonly"
+        (change)="onValueChange()"
+    />
+    <span fxFlex="20px" *ngIf="unit">
+        <select class="select-css" *ngIf="unitOptions" [(ngModel)]="unit" (change)="onUnitChange()" [disabled]="readonly">
+            <option *ngFor="let item of unitOptions" [value]="item.value" [innerHtml]="item.displayName"></option>
+        </select>
+    </span>
+</div>
+
+
+<!-- <mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input matInput 
+        placeholder="Ex. Pizza"
+        type="number"
+        [value]="value"
+        [readonly]="readonly"
+        (change)="change(+$event.target.value)">
+</mat-form-field> -->
