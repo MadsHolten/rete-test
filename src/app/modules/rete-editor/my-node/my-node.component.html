@@ -1,7 +1,7 @@
 <div class="node" [ngClass]="[selected(), node.name]">
 
     <!-- Display title -->
-    <div *ngIf="!editTitleMode || !selected()" class="title" (click)="toggleEditTitleMode()">{{node.name}}</div>
+    <div *ngIf="!editTitleMode || !selected()" class="title"><span (click)="toggleEditTitleMode()">{{node.name}}</span></div>
 
     <!-- Edit title -->
     <div *ngIf="editTitleMode && selected()">

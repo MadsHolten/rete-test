@@ -1,6 +1,6 @@
 import { Component, Input, Output } from "rete";
 import { numSocket, unitSocket } from "../sockets";
-import { NumUnitControl } from "../controls/num-unit-control";
+import { VolumeFlowControl } from "../controls/volume-flow-control";
 
 export class WatchComponent extends Component {
 
@@ -14,11 +14,11 @@ export class WatchComponent extends Component {
     // Define the input of the node
     const inp = new Input("num", "Forbrug", numSocket);
 
-    inp.addControl(new NumUnitControl(this.editor, "num"));
+    inp.addControl(new VolumeFlowControl(this.editor, "num"));
 
     node
       .addInput(inp)
-      .addControl(new NumUnitControl(this.editor, "preview", true, "m3/h"));
+      .addControl(new VolumeFlowControl(this.editor, "preview", true, "m3/h"));
   }
 
   worker(node, inputs, outputs) {
@@ -28,7 +28,7 @@ export class WatchComponent extends Component {
     // Update preview
     const ctrl = this.editor.nodes
       .find(n => n.id === node.id)
-      .controls.get("preview") as NumUnitControl;
+      .controls.get("preview") as VolumeFlowControl;
     ctrl.setValue(val);
   }
 }

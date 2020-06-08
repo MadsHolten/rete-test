@@ -88,6 +88,7 @@ export class ReteEditorComponent implements AfterViewInit {
       (async () => {
         await engine.abort();
         await engine.process(editor.toJSON());
+        console.log(editor.toJSON());
       }) as any
     );
 

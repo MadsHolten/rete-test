@@ -1,7 +1,8 @@
 import { Component, Output } from "rete";
 import { numSocket, unitSocket } from "../sockets";
-import { NumUnitControl } from "../controls/num-unit-control";
+import { VolumeFlowControl } from "../controls/volume-flow-control";
 import * as ucum from "@lhncbc/ucum-lhc";
+import { NumUnit } from '../rete-editor.component';
 
 export class ConsumerComponent extends Component {
 
@@ -15,10 +16,12 @@ export class ConsumerComponent extends Component {
     // Define the output of the node
     const out1 = new Output("num", "Forbrug", numSocket);
 
-    return node.addControl(new NumUnitControl(this.editor, "num", false, node.data.unit)).addOutput(out1);
+    return node.addControl(new VolumeFlowControl(this.editor, "num", false, node.data.unit)).addOutput(out1);
   }
 
   worker(node, inputs, outputs) {
+
+    if(!node.data.unit == undefined) node.data = new NumUnit(0);
     
     // Normalize output
     const utils = ucum.UcumLhcUtils.getInstance();

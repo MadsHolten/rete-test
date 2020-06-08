@@ -1,6 +1,6 @@
 import { Component, Input, Output } from "rete";
 import { numSocket, unitSocket } from "../sockets";
-import { NumUnitControl } from "../controls/num-unit-control";
+import { VolumeFlowControl } from "../controls/volume-flow-control";
 
 export class JointComponent extends Component {
   constructor() {
@@ -12,7 +12,7 @@ export class JointComponent extends Component {
     const inp = new Input("num", "Ind", numSocket, true);
     const out = new Output("num", "Ud", numSocket);
 
-    inp.addControl(new NumUnitControl(this.editor, "num"));
+    inp.addControl(new VolumeFlowControl(this.editor, "num"));
 
     node
       .addInput(inp)

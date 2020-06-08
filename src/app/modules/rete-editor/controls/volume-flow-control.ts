@@ -4,7 +4,7 @@ import { Type } from "@angular/core";
 import { NumberNgControl, QuantityKind } from "./num.component";
 import { NumUnit } from '../rete-editor.component';
 
-export class NumUnitControl extends Control implements AngularControl {
+export class VolumeFlowControl extends Control implements AngularControl {
 
     component: Type<NumberNgControl>;
     props: { [key: string]: unknown };
@@ -17,7 +17,7 @@ export class NumUnitControl extends Control implements AngularControl {
             readonly,
             change: v => this.onChange(v),
             value: 0,
-            label: "Luftvolumenstrøm",
+            label: "Volumenstrøm",
             unit,
             quantityKind: QuantityKind.VolumeFlow,
             mounted: () => {
@@ -28,17 +28,13 @@ export class NumUnitControl extends Control implements AngularControl {
 
     onChange(val: NumUnit) {
         this.setValue(val.num);
-        this.setUnit(val.unit);
         this.emitter.trigger("process");
     }
 
     setValue(val: number) {
         this.props.value = +val;
+        if(!this.props.unit) this.props.unit = "m3/h";  // Default to m3/h
         this.putData("num", this.props.value);
-    }
-
-    setUnit(unit: string){
-        this.props.unit = unit;
         this.putData("unit", this.props.unit);
     }
 }
